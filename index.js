@@ -7,16 +7,16 @@
     const second=document.getElementsByClassName("sec")[0];
     const centiSecond=document.getElementsByClassName("msec")[0];
     const laps=document.getElementsByClassName("laps")[0];
-    const bg=document.getElementsByClassName("outer-circle")[0];
+    
 
-    let isPlay=false;
+    let PlayOn=false;
     let secCounter=0;
     let sec;
     let centiCounter=0;
     let centiSec;
     let min;
     let minCounter=0;
-    let isReset=false;
+    let ResetOn=false;
     let lapItem=0;
 
     const toggleButton=()=> {
@@ -25,8 +25,8 @@
     }
 
     const play= ()=>{
-      if(!isPlay && !isReset){
-        bg.classList.add("animation-bg");
+      if(!PlayOn && !ResetOn){
+        
         playButton.innerHTML='Pause';
         min=setInterval(()=>{
           minute.innerHTML=`${++minCounter} : `;
@@ -44,25 +44,25 @@
           }
           centiSecond.innerHTML=`&nbsp;${++centiCounter}`;
         },10)
-        isPlay=true;
-        isReset=true;
+        PlayOn=true;
+        ResetOn=true;
       }
       else{
         
-        bg.classList.remove("animation-bg");
+        
         playButton.innerHTML='Play';
         clearInterval(sec);
         clearInterval(min);
         clearInterval(centiSec);
-        isPlay=false;
-        isReset=false;
+        PlayOn=false;
+        ResetOn=false;
       }
       toggleButton();
     }
 
 
     const reset =()=>{
-      isReset=true;
+      ResetOn=true;
        play();
        clearAll();
       lapButton.classList.add("hidden");
